@@ -1,0 +1,14 @@
+[Unit]
+Description=BlueSync automatic Bluetooth audio sharing
+After=pipewire.service pipewire-pulse.service wireplumber.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/bluesync-audio
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+NoNewPrivileges=true
+
+[Install]
+WantedBy=default.target

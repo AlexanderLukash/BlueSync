@@ -1,0 +1,14 @@
+[Unit]
+Description=BlueSync automatic Bluetooth audio sharing
+After=pipewire.service pipewire-pulse.service wireplumber.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 %h/.local/share/bluesync/bluesync/service.py
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+NoNewPrivileges=true
+
+[Install]
+WantedBy=default.target

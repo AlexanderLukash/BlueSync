@@ -1,0 +1,9 @@
+__pycache__/
+*.py[cod]
+/build/
+/dist/
+*.egg-info/
+/packaging/aur/src/
+/packaging/aur/pkg/
+/packaging/aur/*.tar.gz
+/packaging/aur/*.pkg.tar.*

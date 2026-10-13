@@ -1,0 +1,9 @@
+# Check ready PipeWire outputs every 2 seconds.
+poll_interval = 2.0
+# Empty = all Bluetooth audio devices, including speakers.
+# To restrict sharing: devices = ["00:11:22:33:44:55", "AA:BB:CC:DD:EE:FF"]
+devices = []
+a2dp_only = true
+latency_compensate = true
+# Route existing and newly opened PulseAudio application streams too.
+move_streams = true

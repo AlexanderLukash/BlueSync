@@ -26,7 +26,7 @@ systemctl --user enable --now bluesync.service
 
 Пакет встановлює команду `bluesync-audio` та користувацький systemd-unit. Не запускає сервіс від root і не вмикає його автоматично для інших користувачів. Для налаштувань скопіюйте `/usr/share/bluesync/config.toml` у `~/.config/bluesync/config.toml`; якщо файла немає, використовуються стандартні значення. Діагностика: `bluesync-audio --status`.
 
-При переході з `install.sh` після встановлення пакета зупиніть сервіс, перенесіть `~/.config/systemd/user/bluesync.service` у резервну копію за межами каталогу unit-файлів, виконайте `systemctl --user daemon-reload`, а потім `systemctl --user reenable --now bluesync.service`. Особисту конфігурацію збережіть.
+При переході з `install.sh` після встановлення пакета зупиніть сервіс, перенесіть `~/.config/systemd/user/bluesync.service` у резервну копію за межами каталогу unit-файлів, виконайте `systemctl --user daemon-reload`, а потім `systemctl --user reenable bluesync.service` і `systemctl --user start bluesync.service`. Особисту конфігурацію збережіть.
 
 У KDE ввімкніть «Показувати віртуальні пристрої» в налаштуваннях віджета гучності. BlueSync керує загальною гучністю, а повзунки фізичних навушників — кожною парою окремо.
 

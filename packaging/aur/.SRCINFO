@@ -1,0 +1,21 @@
+pkgbase = bluesync-audio
+	pkgdesc = Automatically share PipeWire audio across Bluetooth headphones
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/AlexanderLukash/BlueSync
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.11
+	depends = pipewire-pulse
+	depends = libpulse
+	depends = wireplumber
+	depends = bluez
+	depends = systemd
+	source = bluesync-audio-0.1.0.tar.gz::https://github.com/AlexanderLukash/BlueSync/releases/download/v0.1.0/bluesync-audio-0.1.0.tar.gz
+	sha256sums = 2799d9347d1d398f768233cbcd2e5d85fac46899432a5c2de8d80a610bc67be1
+
+pkgname = bluesync-audio

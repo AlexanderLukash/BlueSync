@@ -1,0 +1,31 @@
+# Maintainer: Alexander Lukash <https://github.com/AlexanderLukash>
+pkgname=bluesync-audio
+pkgver=0.1.0
+pkgrel=1
+pkgdesc='Automatically share PipeWire audio across Bluetooth headphones'
+arch=('any')
+url='https://github.com/AlexanderLukash/BlueSync'
+license=('MIT')
+depends=('python>=3.11' 'pipewire-pulse' 'libpulse' 'wireplumber' 'bluez' 'systemd')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('2799d9347d1d398f768233cbcd2e5d85fac46899432a5c2de8d80a610bc67be1')
+
+build() {
+    cd "$srcdir/$pkgname-$pkgver"
+    python -m build --wheel --no-isolation
+}
+
+check() {
+    cd "$srcdir/$pkgname-$pkgver"
+    python -m unittest discover -s tests -q
+}
+
+package() {
+    cd "$srcdir/$pkgname-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 systemd/bluesync-packaged.service "$pkgdir/usr/lib/systemd/user/bluesync.service"
+    install -Dm644 config.toml "$pkgdir/usr/share/bluesync/config.toml"
+    install -Dm644 README.md "$pkgdir/usr/share/doc/bluesync/README.md"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/bluesync/LICENSE"
+}
